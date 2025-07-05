@@ -20,7 +20,7 @@ type Deck struct {
 	cards []Card
 }
 
-func newDeck() *Deck {
+func NewDeck() *Deck {
 	deck := Deck{}
 	ranks := [13]string{"2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"}
 	suits := [4]string{"S","H","D","C"}
