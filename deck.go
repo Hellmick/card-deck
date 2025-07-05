@@ -1,4 +1,4 @@
-package main
+package deck
 
 import (
 	"fmt"
@@ -18,6 +18,20 @@ func newCard(rank string, suit string) *Card {
 
 type Deck struct {
 	cards []Card
+}
+
+func newDeck() *Deck {
+	deck := Deck{}
+	ranks := [13]string{"2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"}
+	suits := [4]string{"S","H","D","C"}
+
+	for _, rank := range ranks {
+		for _, suit := range suits {
+			card := newCard(rank, suit)
+			deck.Push(*card)
+		}
+	}
+	return &deck
 }
 
 func (deck *Deck) Push(card Card) {
@@ -60,19 +74,3 @@ func (deck *Deck) Shuffle() {
 	}
 }
 
-func main(){
-	
-	deck := Deck{}
-
-	ranks := [13]string{"2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"}
-	suits := [4]string{"S","H","D","C"}
-
-	for _, rank := range ranks {
-		for _, suit := range suits {
-			card := newCard(rank, suit)
-			deck.Push(*card)
-		}
-	}
-	deck.Shuffle()
-	deck.Print()
-}
